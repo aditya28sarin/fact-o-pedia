@@ -1,5 +1,6 @@
 const postsResolvers = require('./posts');
 const usersResolvers = require('./users');
+const commentResolvers =require('./comments');
 
 // all the query/mutation.subscription logic will come under here
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
 
     Mutation: {
         ...usersResolvers.Mutation,
-        ...postsResolvers.Mutation
+        ...postsResolvers.Mutation,
+        ...commentResolvers.Mutation
     },
 }
