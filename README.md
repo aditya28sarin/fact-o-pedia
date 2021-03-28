@@ -2,7 +2,7 @@
 
 ### This a one stop website where you can share and post unseen & astonishing facts!
 
-- Created and end to end full stack application using `NodeJS` at the backend. 
+- Created an end to end full stack application using `NodeJS` at the backend. 
 - The database is used to store authentication data as well as content is `MongoDB`.
 - Used `GraphQL` query language for implementing backend APIs and managed using `Apollo`.
 - APIs are connected to the `ReactJS` front-end application.
