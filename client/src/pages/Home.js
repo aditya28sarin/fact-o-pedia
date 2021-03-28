@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { useQuery, gql } from '@apollo/client';
-import { Grid } from 'semantic-ui-react';
 import PostCard from '../Components/PostCard';
-import {Card,Icon,Label, Image, Button} from 'semantic-ui-react';
+import {Card,Icon,Label, Image, Button, Grid, Transition} from 'semantic-ui-react';
 import moment from 'moment';
 import { AuthContext } from '../context/auth';
 import { Link } from 'react-router-dom';
 import PostForm from '../Components/PostForm';
+import LikeButton from '../Components/LikeButton';
 
 
 function Home() {
@@ -16,11 +16,6 @@ function Home() {
   function likePost(){
     console.log('like post');
   }
-
-  function commentOnPost(){
-    console.log('comment post');
-  }
-  
 
   return (
     <Grid columns={3}>
@@ -54,24 +49,26 @@ function Home() {
                   </Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button as='div' labelPosition='right' onClick={likePost}>
-                    <Button color='red' basic >
-                      <Icon name='like' />
-                      Like
-                    </Button>
-                    <Label as='a' basic color='red' pointing='left'>
-                      {post.likeCount}
-                    </Label>
-                  </Button>
-                  <Button as='div' labelPosition='right' onClick={commentOnPost}>
+                  <LikeButton user={user} post={post} />
+                  <Button as='div' labelPosition='right' as={Link} to={`/posts/${post.id}`}>
                     <Button color='blue' basic >
-                      <Icon name='comments' />
-                      Comments
+                      <Icon name='comment' />
+                      
                     </Button>
                     <Label as='a' basic color='blue' pointing='left'>
                       {post.commentCount}
                     </Label>
                   </Button>
+                  {user && user.username === post.username && (
+                    <Button
+                      as="div"
+                      color="red"
+                      floated="right"
+                      onClick={() => console.log('Delete post')}
+                    >
+                      <Icon name="trash" style={{ margin: 0 }} />
+                    </Button>
+                  )}
                 </Card.Content>
             </Card>
             </Grid.Column>
