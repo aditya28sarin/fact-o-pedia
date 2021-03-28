@@ -7,11 +7,11 @@ import { AuthContext } from '../context/auth';
 import { Link } from 'react-router-dom';
 import PostForm from '../Components/PostForm';
 import LikeButton from '../Components/LikeButton';
-
+import DeleteButton from '../Components/DeleteButton';
 
 function Home() {
   const {user} = useContext(AuthContext);
-  const {loading, error, data} = useQuery(FETCH_POSTS_QUERY);
+  const {loading, error, data : {getPosts:posts}={}} = useQuery(FETCH_POSTS_QUERY);
 
   function likePost(){
     console.log('like post');
@@ -32,8 +32,8 @@ function Home() {
         {loading ? (
           <h1>Loading posts..</h1>
         ) : (
-          data.getPosts.length>0 &&
-          data.getPosts.map((post) => (
+          posts.length>0 &&
+          posts.map((post) => (
             <Grid.Column key={post.id} style={{ marginBottom: 20 }}>
               <Card fluid>
                 <Card.Content>
@@ -59,16 +59,7 @@ function Home() {
                       {post.commentCount}
                     </Label>
                   </Button>
-                  {user && user.username === post.username && (
-                    <Button
-                      as="div"
-                      color="red"
-                      floated="right"
-                      onClick={() => console.log('Delete post')}
-                    >
-                      <Icon name="trash" style={{ margin: 0 }} />
-                    </Button>
-                  )}
+                  {user && user.username === post.username && <DeleteButton postId={post.id} />}
                 </Card.Content>
             </Card>
             </Grid.Column>
@@ -79,8 +70,8 @@ function Home() {
   );
 }
 
-const FETCH_POSTS_QUERY = gql`
-   {
+export const FETCH_POSTS_QUERY = gql`
+  query GetPosts {
         getPosts {
         id
         body
