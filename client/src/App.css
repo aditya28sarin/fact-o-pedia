@@ -37,3 +37,9 @@ body{
     margin-top: 2rem;
 }
 
+.main-subheading{
+    letter-spacing: 5px;
+    margin-top: -1rem;
+    font-weight: lighter;
+    color: black;
+}

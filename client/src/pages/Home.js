@@ -20,6 +20,7 @@ function Home() {
     <Grid columns={3}>
       <Grid.Row className="page-title">
         <h1 className="main-heading">Fact-O-Pedia</h1>
+        <h5 className="main-subheading">One Stop Destination For Ashtonishing Facts!</h5>
       </Grid.Row>
       <Grid.Row>
       {
