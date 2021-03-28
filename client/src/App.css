@@ -5,7 +5,35 @@
     margin-top: 10px;
 }
 
+body{
+    background-color: #FDFDFD;
+}
+
 .form-container{
     width: 400px;
     margin: auto;
 }
+
+.main-heading{
+    font-family: 'Syne Mono', monospace;
+    letter-spacing: 10px;
+    font-size: 35px;
+    color: black;
+}
+
+.name{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.name-heading{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    font-size: 28px;   
+}
+.text{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 2rem;
+}
+
