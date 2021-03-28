@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Grid } from 'semantic-ui-react';
 import PostCard from '../Components/PostCard';
 import {Card,Icon,Label, Image, Button} from 'semantic-ui-react';
 import moment from 'moment';
+import { AuthContext } from '../context/auth';
 import { Link } from 'react-router-dom';
+import PostForm from '../Components/PostForm';
 
 
 function Home() {
+  const {user} = useContext(AuthContext);
   const {loading, error, data} = useQuery(FETCH_POSTS_QUERY);
 
   function likePost(){
@@ -25,6 +28,12 @@ function Home() {
         <h1>Recent Posts</h1>
       </Grid.Row>
       <Grid.Row>
+      {
+        user && (
+          <Grid.Column>
+            <PostForm />
+          </Grid.Column>
+        )}
         {loading ? (
           <h1>Loading posts..</h1>
         ) : (
